@@ -16,5 +16,49 @@ class MyPokemon(db.Model):
 
 ## Create a User Model
 ## must have set_password, check_password and to Dict
+class User(db.Model):
+    id = db.Column(db.Integer, primary_key = True)
+    user = db.Column(db.String(80), unique = True, nullable = False)
+    email = db.Column(db.String(120), unique = True, nullable = False)
+    password = db.Column(db.String(120), nullable = False)
+
+    def toDict(self):
+        return{
+            "id": self.id,
+            "username": self.user,
+            "email": self.email,
+            "password": self.password
+        }
+
+    def set_password(self, password):
+        # Create a hash of the password
+        self.password = generate_password_hash(password, method = 'sha256')
+
+    def check_password(self, password):
+        # Checks hashed password         
+        return check_password_hash(self.password, password)
+
 
 ## Create a Pokemon Model
+class Pokemon(db.Model):
+    pid = db.Column('pid', db.Integer, primary_key=True)
+    name = db.Column('name', db.String(50))
+    attack = db.Column('attack', db.Integer)
+    defense = db.Column('defense', db.Integer)
+    hp = db.Column('hp', db.Integer)
+    height = db.Column('height', db.Numeric)
+    sp_attack = db.Column('sp_attack', db.Integer)
+    sp_defense = db.Column('sp_defense', db.Integer)
+    speed = db.Column('speed', db.Integer)
+    type1 = db.Column('type1', db.String(50))
+    type2 = db.Column('type2', db.String(50))
+    weight = db.Column('weight', db.Numeric)
+
+    def toDict(self):
+        return{
+            'name':self.name,
+            'type1':self.type1,
+            'type2':self.type2,
+            'weight':self.weight,
+            'height':self.height
+        }
