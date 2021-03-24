@@ -4,13 +4,6 @@ import csv
 db.create_all(app=app)
 
 # add code to parse csv, create and save pokemon objects
-
-# with open('pokemon.csv', newline='') as csvfile:
-#     pokemon = csv.reader(csvfile, delimiter=' ', quotechar='|')
-#     for row in pokemon:
-#         name = row["name"]
-#         print(name)
-
 with open('pokemon.csv', mode='r') as csv_file:
     pokemonFile = csv.DictReader(csv_file)
     for pokemon in pokemonFile:
