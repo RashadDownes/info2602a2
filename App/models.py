@@ -46,19 +46,26 @@ class Pokemon(db.Model):
     attack = db.Column('attack', db.Integer)
     defense = db.Column('defense', db.Integer)
     hp = db.Column('hp', db.Integer)
-    height = db.Column('height', db.Numeric)
-    sp_attack = db.Column('sp_attack', db.String(50))
-    sp_defense = db.Column('sp_defense', db.String(50))
+    height = db.Column('height', db.String(50))
+    sp_attack = db.Column('sp_attack', db.Integer)
+    sp_defense = db.Column('sp_defense', db.Integer)
     speed = db.Column('speed', db.Integer)
     type1 = db.Column('type1', db.String(50))
     type2 = db.Column('type2', db.String(50))
-    weight = db.Column('weight', db.Numeric)
+    weight = db.Column('weight', db.String(50))
 
     def toDict(self):
         return{
+            'pid':self.pid,
             'name':self.name,
+            'attack': self.attack,
+            'defense':self.defense,
+            'hp':self.hp,
+            'height':self.height,
+            'sp_attack':self.sp_attack,
+            'sp_defense':self.sp_defense,
+            'speed':self.speed,
             'type1':self.type1,
             'type2':self.type2,
-            'weight':self.weight,
-            'height':self.height
+            'weight':self.weight
         }
