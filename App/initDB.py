@@ -15,8 +15,8 @@ with open('pokemon.csv', mode='r') as csv_file:
     Pokemons = csv.DictReader(csv_file)
     for pokemon in Pokemons:
         data = Pokemon(
-            name = pokemon["name"]
-            id = pokemon["id"], 
+            pid = pokemon["pokedex_number"], 
+            name = pokemon["name"],
             attack = pokemon["attack"],
             defense =  pokemon["defense"],
             hp = pokemon["hp"],
@@ -31,25 +31,5 @@ with open('pokemon.csv', mode='r') as csv_file:
         print(data)
         db.session.add(data)
     db.session.commit()
-
-# # with open('../data.json') as json_file:
-#     data = json.load(json_file)
-#     for pokemon in Pokemons:
-#         data = Datas(
-#             name = pokemon['name'],  
-#             id = pokemon['id'], 
-#             attack = pokemon['stats']['attack'],
-#             defense =  pokemon['stats']['defense'],
-#             hp = pokemon['stats']['hp'],
-#             height = pokemon['physique']['height'],
-#             sp_attack = pokemon['specials']['sp_attack'],
-#             sp_defense = pokemon['specials']['sp_defense'],
-#             speed = pokemon['stats']['speed'],
-#             type1 = pokemon['type']['type1'],
-#             type2 = pokemon['type']['type2'],
-#             weight = pokemon['physique']['weight']
-#         )
-#         db.session.add(data)
-#     db.session.commit()
 
 # replace any null values with None to avoid db errors
