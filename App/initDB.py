@@ -5,7 +5,7 @@ db.create_all(app=app)
 
 # add code to parse csv, create and save pokemon objects
 
-with open('./data.json') as json_file:
+with open('../data.json') as json_file:
     data = json.load(json_file)
     for pokemon in Pokemons:
         data = Datas(
