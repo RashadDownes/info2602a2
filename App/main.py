@@ -31,6 +31,7 @@ app.app_context().push()
 def index():
   return render_template('index.html')
 
+
 @app.route('/app')
 def client_app():
   return app.send_static_file('app.html')
