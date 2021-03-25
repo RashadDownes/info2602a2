@@ -26,18 +26,11 @@ app.app_context().push()
 ''' Set up JWT here '''
 headings = ("Name", "Type1", "Type2", "Weight", "Height")
 data = Pokemon(
-            pid = pokemon["pokedex_number"], 
             name = pokemon["name"],
-            attack = pokemon["attack"],
-            defense =  pokemon["defense"],
-            hp = pokemon["hp"],
-            height = pokemon["height_m"],
-            sp_attack = pokemon["sp_attack"],
-            sp_defense = pokemon["sp_defense"],
-            speed = pokemon["speed"],
             type1 = pokemon["type1"],
             type2 = pokemon["type2"],
-            weight = pokemon["weight_kg"]
+            weight = pokemon["weight_kg"],
+            height = pokemon["height_m"]
         )
 ''' End JWT Setup '''
 
