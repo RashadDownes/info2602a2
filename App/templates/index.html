@@ -40,11 +40,11 @@
         <table class="col m6 offset-m3">
           <!-- Add jinja templateing to show Namy, type1, type2, Weight and Height of user's pokemon  -->
           <tr>
-              {% for title in titles%}
+              {% for header in headings%}
               <th scope="col">{{ header }}</th>
               {% endfor %}
           </tr>
-          {% for row in data %}
+          {% for row in pokelist %}
           <tr>
                 {% for cell in row %}
                     <td scope="row">{{cell}}</td>
@@ -52,13 +52,7 @@
           </tr>
           {% endfor %}
         </table>
-      </div>
-
-      <!-- <td scope="row">Pokemon</td>
-              <td>Type1</td>
-              <td>Type2</td>
-              <td>Weight</td>
-              <td>Height</td> -->
+    </div>
         
     <script src="https://code.iconify.design/1/1.0.4/iconify.min.js"></script>
     <!-- Compiled and minified JavaScript -->

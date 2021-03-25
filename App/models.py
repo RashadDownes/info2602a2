@@ -41,18 +41,18 @@ class User(db.Model):
 
 ## Create a Pokemon Model
 class Pokemon(db.Model):
-    pid = db.Column('pid', db.Integer, primary_key=True, unique = True, nullable = False)
-    name = db.Column('name', db.String(50), nullable = False)
-    attack = db.Column('attack', db.Integer, nullable = False)
-    defense = db.Column('defense', db.Integer, nullable = False)
-    hp = db.Column('hp', db.Integer, nullable = False)
-    height = db.Column('height', db.String(50), nullable = False)
-    sp_attack = db.Column('sp_attack', db.Integer, nullable = False)
-    sp_defense = db.Column('sp_defense', db.Integer, nullable = False)
-    speed = db.Column('speed', db.Integer, nullable = False)
-    type1 = db.Column('type1', db.String(50), nullable = False)
-    type2 = db.Column('type2', db.String(50), nullable = False)
-    weight = db.Column('weight', db.String(50), nullable = False)
+    pid = db.Column('pid', db.Integer, primary_key=True, nullable = False)
+    name = db.Column('name', db.String(50), unique=True, nullable = False)
+    attack = db.Column('attack', db.Integer, nullable = True)
+    defense = db.Column('defense', db.Integer, nullable = True)
+    hp = db.Column('hp', db.Integer, nullable = True)
+    height = db.Column('height', db.String(50), nullable = True)
+    sp_attack = db.Column('sp_attack', db.Integer, nullable = True)
+    sp_defense = db.Column('sp_defense', db.Integer, nullable = True)
+    speed = db.Column('speed', db.Integer, nullable = True)
+    type1 = db.Column('type1', db.String(50), nullable = True)
+    type2 = db.Column('type2', db.String(50), nullable = True)
+    weight = db.Column('weight', db.String(50), nullable = True)
 
     def toDict(self):
         return{

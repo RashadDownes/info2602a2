@@ -1,5 +1,4 @@
 import json
-import jinja2
 from flask import Flask, request, render_template
 from flask_jwt import JWT, jwt_required, current_identity
 from sqlalchemy.exc import IntegrityError
@@ -24,21 +23,28 @@ app.app_context().push()
 ''' End Boilerplate Code '''
 
 ''' Set up JWT here '''
-headings = ("Name", "Type1", "Type2", "Weight", "Height")
-data = Pokemon(
-            name = pokemon["name"],
-            type1 = pokemon["type1"],
-            type2 = pokemon["type2"],
-            weight = pokemon["weight_kg"],
-            height = pokemon["height_m"]
-        )
+
 ''' End JWT Setup '''
 
 # edit to query 50 pokemon objects and send to template
+global pokemon
 @app.route('/')
-def index():
-  return render_template('index.html', headings = headings, data = data)
-
+def index(): 
+    headings=["Name", "Type1", "Type2", "Weight", "Height"]   
+    pokemon= Pokemon.query.limit(50).all()
+    pokelist=[]
+    for i in range(len(pokemon)):
+        data=pokemon[i].toDict()
+        List = (
+            data['name'], 
+            data['type1'],
+            data['type2'],
+            data['weight'],
+            data['height']
+        )
+        pokelist.append(List)
+    return render_template('index.html',headings=headings,pokelist = pokelist)
+    
 
 @app.route('/app')
 def client_app():
