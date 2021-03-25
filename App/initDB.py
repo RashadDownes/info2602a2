@@ -6,6 +6,7 @@ db.create_all(app=app)
 # add code to parse csv, create and save pokemon objects
 with open('pokemon.csv', mode='r') as csv_file:
     pokemonFile = csv.DictReader(csv_file)
+    # replace any null values with None to avoid db errors
     for pokemon in pokemonFile:
         if pokemon["attack"] == '':
             pokemon["attack"] = None
@@ -46,4 +47,4 @@ with open('pokemon.csv', mode='r') as csv_file:
         db.session.add(pokemons)
     db.session.commit()
 
-# replace any null values with None to avoid db errors
+
